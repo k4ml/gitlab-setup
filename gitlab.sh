@@ -149,6 +149,7 @@ sudo -u git cp config/database.yml.mysql config/database.yml
 # Change 'secure password' with the value you have given to $password
 # You can keep the double quotes around the password
 #sudo -u git -H editor config/database.yml
+sudo sed -i 's/username: root/username: gitlab/' config/database.yml
 sudo sed -i 's/"secure password"/"'$db_password'"/' config/database.yml
 
 # Make config/database.yml readable to git only
