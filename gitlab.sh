@@ -8,52 +8,52 @@ else
     exit
 fi
 
-##sudo apt-get install -y build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl git-core openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev libmysqld-dev libmysqlclient-dev mysql-client
-##
-### Install Python
-##sudo apt-get install -y python
-##
-##sudo apt-get remove -y ruby1.8
-##
-##CWD=`pwd`
-##mkdir -p /tmp/ruby && cd /tmp/ruby
-##curl --progress ftp://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz | tar xz
-##cd ruby-2.0.0-p247
-##./configure
-##make
-##sudo make install
-##cd $CWD
-##
-##sudo gem install bundler --no-ri --no-rdoc
-##
-#if [ `grep -c '^git:' /etc/passwd` == 0 ]; then
-#    sudo adduser --disabled-login --gecos 'GitLab' git
-#fi
-#
-### Go to home directory
-#CWD=`pwd`
-#cd /home/git
-#
-### Clone gitlab shell
-#sudo -u git -H git clone https://github.com/gitlabhq/gitlab-shell.git
-#
-#cd gitlab-shell
-#
-### switch to right version
-#sudo -u git -H git checkout v1.4.0
-#
-#sudo -u git -H cp config.yml.example config.yml
-#
-### Edit config and replace gitlab_url
-### with something like 'http://domain.com/'
-### sudo -u git -H editor config.yml
-#echo 'Set host in config.yml'
-#sudo sed -i "s/  host: localhost/  host: $domain_var/" config.yml
-#
-## Do setup
-#echo "Do setup"
-#sudo -u git -H ./bin/install
-#cd $CWD
+sudo apt-get install -y build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl git-core openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev libmysqld-dev libmysqlclient-dev mysql-client
+
+# Install Python
+sudo apt-get install -y python
+
+sudo apt-get remove -y ruby1.8
+
+CWD=`pwd`
+mkdir -p /tmp/ruby && cd /tmp/ruby
+curl --progress ftp://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz | tar xz
+cd ruby-2.0.0-p247
+./configure
+make
+sudo make install
+cd $CWD
+
+sudo gem install bundler --no-ri --no-rdoc
+
+if [ `grep -c '^git:' /etc/passwd` == 0 ]; then
+   sudo adduser --disabled-login --gecos 'GitLab' git
+fi
+
+# Go to home directory
+CWD=`pwd`
+cd /home/git
+
+## Clone gitlab shell
+sudo -u git -H git clone https://github.com/gitlabhq/gitlab-shell.git
+
+cd gitlab-shell
+
+## switch to right version
+sudo -u git -H git checkout v1.4.0
+
+sudo -u git -H cp config.yml.example config.yml
+
+## Edit config and replace gitlab_url
+## with something like 'http://domain.com/'
+## sudo -u git -H editor config.yml
+echo 'Set host in config.yml'
+sudo sed -i "s/  host: localhost/  host: $domain_var/" config.yml
+
+# Do setup
+echo "Do setup"
+sudo -u git -H ./bin/install
+cd $CWD
 
 #==
 #== 5. MySQL
